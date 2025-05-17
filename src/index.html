@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:">
+
+    <title>LaTeX Journal MVP</title>
+    </head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>LaTeX Journal</h1>
+            <div class="controls">
+                <label for="entry-date">Entry Date:</label>
+                <input type="date" id="entry-date">
+                <button id="load-entry" class="button">Load</button>
+                <button id="save-entry" class="button">Save</button>
+                <button id="compile-pdf" class="button compile-button">Compile to PDF</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="editor-container" class="editor-area">
+                </div>
+            <div id="pdf-preview-area" class="preview-area">
+                <div id="pdf-viewer-container" class="pdf-viewer-custom">
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <div id="status-message" class="status-message">Welcome! Select a date to begin.</div>
+        </footer>
+    </div>
+
+    </body>
+</html>

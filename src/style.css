@@ -1,0 +1,181 @@
+/* src/style.css */
+:root {
+    --editor-bg: #1e1e1e; /* Monaco vs-dark background */
+    --app-bg: #252526;    /* Slightly lighter for app shell */
+    --sidebar-bg: #333333;
+    --text-color: #cccccc;
+    --text-color-secondary: #999999;
+    --border-color: #3c3c3c;
+    --accent-color: #007acc;
+    --button-bg: #0e639c;
+    --button-hover-bg: #007acc;
+    --input-bg: #3c3c3c;
+    --input-border: #3c3c3c;
+    --status-info-bg: #264f78;
+    --status-info-text: #bbe1ff;
+    --status-success-bg: #38761d;
+    --status-success-text: #d9ead3;
+    --status-error-bg: #7d2e2e;
+    --status-error-text: #f4cccc;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: var(--app-bg);
+    color: var(--text-color);
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.app-header {
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.app-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8em;
+    color: var(--text-color); /* Changed from #2c3e50 */
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controls label {
+    font-weight: 500;
+    color: var(--text-color-secondary);
+}
+
+.controls input[type="date"] {
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+/* Style the date picker indicator for dark theme if possible (browser dependent) */
+.controls input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+
+.button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: var(--button-bg);
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.compile-button {
+    background-color: #27ae60; /* Keeping green for compile, or choose a dark-theme friendly green */
+}
+
+.compile-button:hover {
+    background-color: #229954;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.editor-area {
+    flex: 1;
+    border: 1px solid var(--border-color); /* Use theme border */
+    border-radius: 4px;
+    overflow: hidden; /* Monaco handles its own scrollbars */
+    background-color: var(--editor-bg); /* Match editor background */
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-area {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: auto;
+    background-color: var(--sidebar-bg); /* Slightly different dark for PDF background */
+    display: flex; /* Added for iframe behavior */
+    flex-direction: column; /* Added for iframe behavior */
+}
+
+
+#editor-container {
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+#pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Forcing a dark background for default PDF viewer, might not always work perfectly */
+    /* background-color: var(--sidebar-bg);  */
+}
+
+.pdf-viewer-custom {
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Allow scrolling for multiple pages */
+    background-color: var(--app-bg); /* Match app background or choose another */
+}
+.pdf-viewer-custom .page { /* PDF.js often creates divs with class 'page' containing canvases */
+    margin: 10px auto; /* Center pages with some margin */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Optional: add a little shadow to pages */
+}
+
+.app-footer {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: var(--text-color-secondary);
+    min-height: 20px;
+}
+
+.status-message { /* Base style for status message area */
+    padding: 8px;
+    border-radius: 4px;
+    text-align: left;
+    color: var(--text-color); /* Default text color for status */
+}
+
+.status-info {
+    background-color: var(--status-info-bg);
+    color: var(--status-info-text);
+}
+.status-success {
+    background-color: var(--status-success-bg);
+    color: var(--status-success-text);
+}
+.status-error {
+    background-color: var(--status-error-bg);
+    color: var(--status-error-text);
+}
